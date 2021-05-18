@@ -4,6 +4,7 @@ import { useFetchWithPagination } from "hooks/useFetchWithPagination";
 import { usePost } from "hooks/usePost";
 import { IEmployee } from "interface";
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AddNewForm from "./components/AddNewForm";
 import columns from "./renderColumns";
 
@@ -51,7 +52,7 @@ function Employee() {
       />
       {isAddNew && <AddNewForm onFinish={handleSubmit} employeeForm={employeeForm} />}
       <div className="button-wrapper">
-        <Button href='/counter'>Counter</Button>
+        <Link to="/counter">Counter</Link>
         <Button onClick={toggleAddNew}>Add new</Button>
       </div>
     </div>

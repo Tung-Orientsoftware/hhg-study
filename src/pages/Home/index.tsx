@@ -1,12 +1,12 @@
-import { Button } from "antd"
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="home">
       <h1>Home</h1>
       <div className="wrapper">
-        <Button href="/counter">Counter</Button>
-        <Button href="/employees">Employee</Button>
+        <Link to="/counter">Counter</Link>
+        <Link to="/employees">Employee</Link>
       </div>
     </div>
   );

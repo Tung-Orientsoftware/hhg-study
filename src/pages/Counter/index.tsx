@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { Button } from 'antd';
+import { Link } from "react-router-dom";
 
 function Counter() {
   const [counter, setCounter] = useState<number>(0);
@@ -20,7 +21,7 @@ function Counter() {
         <Button onClick={increseCounter}>Increase</Button>
         <Button onClick={resetCounter}>Reset</Button>
       </div>
-      <Button href="/employees">Employee page</Button>
+      <Link to="/employees">Employee</Link>
     </div>
   );
 };
