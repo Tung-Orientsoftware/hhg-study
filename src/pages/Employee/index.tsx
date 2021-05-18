@@ -1,6 +1,6 @@
 import { Button, Table, Form } from "antd"
 import { DEFAULT_LIMIT } from "constant";
-import { useFetch } from "hooks/useFetch";
+import { useFetchWithPagination } from "hooks/useFetchWithPagination";
 import { usePost } from "hooks/usePost";
 import { IEmployee } from "interface";
 import { useCallback, useEffect, useState } from "react";
@@ -13,7 +13,7 @@ function Employee() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isAddNew, setIsAddNew] = useState<boolean>(false);
   const [employeeForm] = useForm();
-  const { data, isLoading, total, fetchData } = useFetch<IEmployee>({ endpoint: "employee", page: currentPage });
+  const { data, isLoading, total, fetchData } = useFetchWithPagination<IEmployee>({ endpoint: "employee", page: currentPage });
   const { postData, status } = usePost();
 
   useEffect(function () {
@@ -32,7 +32,11 @@ function Employee() {
   const handleSubmit = useCallback(function () {
     const { user } = employeeForm.getFieldsValue();
     postData("employee", user);
-  }, [employeeForm, postData])
+  }, [employeeForm, postData]);
+
+  const toggleAddNew = useCallback(function () {
+    setIsAddNew(value => !value);
+  }, [])
 
   return (
     <div className="table-employee">
@@ -48,7 +52,7 @@ function Employee() {
       {isAddNew && <AddNewForm onFinish={handleSubmit} employeeForm={employeeForm} />}
       <div className="button-wrapper">
         <Button href='/counter'>Counter</Button>
-        <Button onClick={() => setIsAddNew(!isAddNew)}>Add new</Button>
+        <Button onClick={toggleAddNew}>Add new</Button>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import axios from "axios";
 
 const HOST = process.env.REACT_APP_API_HOST;
 
-export function useFetch<T>(config: IFetchQuery) {
+export function useFetchWithPagination<T>(config: IFetchQuery) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<T[]>([]);
   const [total, setTotal] = useState<number>(0);

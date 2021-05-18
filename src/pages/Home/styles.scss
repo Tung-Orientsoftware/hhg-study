@@ -1,0 +1,11 @@
+.home {
+  max-width: 200px;
+  display: block;
+  margin: 5rem auto;
+  text-align: center;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
